@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <header class="top">
+      <div>
+        <h1>BMI Calculator</h1>
+        <p class="hint">Check your Body Mass Index and healthy weight range.</p>
+      </div>
+      <button id="theme" class="icon-btn" type="button" aria-label="Toggle dark or light theme">☀️</button>
+    </header>
+
+    <div class="layout">
+  
+      <section class="inputs">
+        <div class="units" role="group" aria-label="Unit system">
+          <button type="button" id="metric" class="unit active">Metric (cm, kg)</button>
+          <button type="button" id="imperial" class="unit">Imperial (ft, lb)</button>
+        </div>
+
+        <form id="bmi-form" novalidate>
+          <div class="field" id="height-metric">
+            <label for="height-cm">Height (cm)</label>
+            <input id="height-cm" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 165">
+          </div>
+
+          <div class="field row" id="height-imperial" hidden>
+            <div>
+              <label for="height-ft">Height (ft)</label>
+              <input id="height-ft" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 5">
+            </div>
+            <div>
+              <label for="height-in">Inches</label>
+              <input id="height-in" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 5">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="weight" id="weight-label">Weight (kg)</label>
+            <input id="weight" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 58">
+          </div>
+
+          <p id="error" class="error" role="alert"></p>
+
+          <div class="actions">
+            <button type="submit" class="primary">Calculate BMI</button>
+            <button type="reset" class="secondary">Reset</button>
+          </div>
+        </form>
+
+        <p class="note">BMI is a general screening measure, not a medical diagnosis.</p>
+      </section>
+
+    
+      <aside class="side">
+        <section id="result" class="result" aria-live="polite" hidden>
+          <p class="label">Your BMI</p>
+          <p id="bmi-value" class="value">0.0</p>
+          <p id="bmi-category" class="category"></p>
+
+          <div class="gauge" aria-hidden="true">
+            <div class="bar">
+              <span style="width:28.3%" class="seg under"></span>
+              <span style="width:21.7%" class="seg normal"></span>
+              <span style="width:16.7%" class="seg over"></span>
+              <span style="width:33.3%" class="seg obese"></span>
+            </div>
+            <div id="marker" class="marker"></div>
+            <div class="ticks"><span>10</span><span>18.5</span><span>25</span><span>30</span><span>40</span></div>
+          </div>
+
+          <p id="range" class="range"></p>
+          <p id="advice" class="advice"></p>
+        </section>
+
+        <div class="placeholder">
+          <p class="big">📊</p>
+          <p>Your result will appear here.</p>
+          <p class="muted">Enter your height and weight, then press Calculate.</p>
+        </div>
+
+        <section class="history">
+          <div class="history-head">
+            <h2>Recent results</h2>
+            <button type="button" id="clear-history" class="link-btn">Clear</button>
+          </div>
+          <ul id="history-list"></ul>
+          <p id="history-empty" class="muted">No calculations yet.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
